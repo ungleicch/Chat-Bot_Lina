@@ -1,5 +1,5 @@
-Wie ist dein Name?
-Wie alt bist du?
-Magst du 
-Willst du 
-Kannst du 
+What is your name?
+How old are you?
+Do you like
+Do you want
+Can you
