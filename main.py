@@ -8,10 +8,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/antwort", methods=["POST"])
+@app.route("/answer", methods=["POST"])
 def antwort():
-    nachricht = request.json["nachricht"]
-    n = main(nachricht)
+    message = request.json["message"]
+    n = main(message)
     
     return jsonify(n)
 
@@ -92,15 +92,15 @@ def main(user_input):
     
     if check_for_image_request(user_input):
         image_url = "/static/images/send_p.jpg" 
-        response_text = "Bild gesendet"
+        response_text = "picture sent"
         save_context(context_filename, user_input + "\n" + response_text + "\n")
         return {"antwort": response_text, "image": image_url}
     
     if check_for_video_request(user_input):
         video_url = "/static/videos/video_r.mp4"
-        response_text = "Video gesendet"
+        response_text = "video sent"
         save_context(context_filename, user_input + "\n" + response_text + "\n")
-        return {"antwort": response_text, "video": video_url}
+        return {"answer": response_text, "video": video_url}
 
     else:
         context = load_context(context_filename)
@@ -109,7 +109,7 @@ def main(user_input):
         save_context("promt.txt", prompt)
         generated_text = generate_text(prompt)
         save_context(context_filename, user_input + "\n" + generated_text + "\n")
-        return {"antwort": generated_text}
+        return {"answer": generated_text}
 
 
 if __name__ == "__main__":
