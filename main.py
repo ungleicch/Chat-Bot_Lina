@@ -9,14 +9,14 @@ def home():
     return render_template("index.html")
 
 @app.route("/answer", methods=["POST"])
-def antwort():
-    message = request.json["message"]
-    n = main(message)
+def answer():
+    message_s = request.json["message_s"]
+    n = main(message_s)
     
     return jsonify(n)
 
 
-openai.api_key = "your_key"
+openai.api_key = "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"
 
 model_engine = "text-davinci-002"
 def generate_text(prompt):
@@ -94,7 +94,7 @@ def main(user_input):
         image_url = "/static/images/send_p.jpg" 
         response_text = "picture sent"
         save_context(context_filename, user_input + "\n" + response_text + "\n")
-        return {"antwort": response_text, "image": image_url}
+        return {"answer": response_text, "image": image_url}
     
     if check_for_video_request(user_input):
         video_url = "/static/videos/video_r.mp4"

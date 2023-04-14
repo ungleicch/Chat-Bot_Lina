@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
         chatInput.value = "";
         addMessage("User", userMessage, imageUrls.getAttribute("data-user"));
     
-        const response = await fetch("/antwort", {
+        const response = await fetch("/answer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nachricht: userMessage }),
+            body: JSON.stringify({ message_s: userMessage }),
         });
         const data = await response.json();
     
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (data.video) {
             addVideo("Lina", data.video, imageUrls.getAttribute("data-bot"));
         } else {
-            addMessage("Lina", data.antwort, imageUrls.getAttribute("data-bot"));
+            addMessage("Lina", data.answer, imageUrls.getAttribute("data-bot"));
         }
     });
     
@@ -106,3 +106,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadSuggestedPhrases();
 });
+
