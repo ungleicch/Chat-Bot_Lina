@@ -16,7 +16,7 @@ def answer():
     return jsonify(n)
 
 
-openai.api_key = "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"
+openai.api_key = "Your openai key"
 
 model_engine = "text-davinci-002"
 def generate_text(prompt):
